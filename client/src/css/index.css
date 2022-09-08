@@ -1,0 +1,786 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import url('converter.css');
+@import url('admin.css');
+@import url('admin-edit.css');
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background: #000 !important;
+}
+
+/* Omeka Admin Bar */
+#admin-bar {
+  position: relative;
+  z-index: 1001;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-color: #000 !important;
+}
+
+.visible.transition {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.three-router {
+  width: 100%;
+  height: 100%;
+}
+
+.app-root-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.three-loader-dimmer {
+  background: rgba(0,0,0,1.0) !important;
+  width: 100%;
+}
+
+.three-loader-dimmer .content {
+  width: 80% !important;
+}
+
+.dimmer.visible.active {
+  display: flex !important;
+}
+
+.three-loader-dimmer h1 {
+  color: #fff;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.loader-modal-error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.loader-modal-error-label {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.three-view {
+  flex: 1;
+  height: auto;
+  width: 100%;
+  cursor: grab;
+  position: relative;
+}
+
+.three-view.dragging {
+  cursor: grabbing;
+}
+
+.three-view.raycasting {
+  cursor: crosshair;
+}
+
+.three-view.tools-active {
+  flex: 0.8;
+  transition: flex ease-in-out 0.5s;
+}
+
+.three-view canvas {
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: none;
+  margin-top: 0px !important;
+}
+
+.three-view-2d-renderer {
+  position: absolute;
+  top: 0;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: none;
+  margin-top: 0px !important;
+}
+
+.three-progress-loader {
+  width: 50%;
+}
+
+.three-view-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 0;
+  max-height: 100%;
+  background-color: #000;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
+.three-gui-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+
+.three-controls-container {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  padding: 10px;
+  z-index: 1001;
+  flex-wrap: wrap;
+  background-color: #1b1b1b;
+}
+
+.three-controls-container .three-controls-button {
+  background-color: rgba(0,0,0,0.5) !important;
+  margin-top: 10px !important;
+}
+
+.three-controls-button .save-status.success {
+  color: #00b400 !important;
+}
+
+.three-controls-button .save-status.failure {
+  color: #db2828 !important;
+}
+
+.three-controls-container .three-controls-button:hover {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.three-controls-container .three-controls-button.active {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+
+.three-controls-button i {
+
+}
+
+.three-controls-button.mobile i {
+  border-left: none;
+}
+
+.three-controls-button {
+  margin-right: 10px !important;
+  font-family: 'Source Code Pro', monospace !important;
+}
+
+.three-info-modal {
+  overflow-y: scroll;
+  position: relative !important;
+}
+
+.three-info-modal .content {
+  padding-top: 20px;
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.three-info-grid {
+  position: relative;
+  width: 80%;
+  height: auto;
+  overflow-y: scroll;
+  margin: 0 auto !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+}
+
+.three-info-grid-row-odd {
+  border-bottom: 3px solid #333;
+  flex-wrap: nowrap !important;
+}
+
+.three-info-grid-row-even {
+  flex-wrap: nowrap !important;
+}
+
+.three-info-grid-val-text {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 20px;
+  color: #ccc;
+}
+
+.three-info-grid-row-odd h2 {
+  font-family: 'Source Code Pro', monospace;
+  color: #fff;
+}
+
+.info-grid-divider {
+  border-left: 2px solid #ccc;
+}
+
+.three-tool-menu-dropdown {
+  padding: 20px;
+}
+
+.three-tool-menu-dropdown.collapsed {
+  opacity: 0.0;
+  transition: opacity ease-in-out 0.5s;
+}
+
+.three-tool-menu-dropdown.expanded {
+  opacity: 1.0;
+  transition: opacity ease-in-out 0.5s;
+}
+
+.three-tool-menu {
+  position: relative;
+  color: #ccc !important;
+  background-color: #111 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-height: 100vh;
+  flex: 0.2;
+  overflow-y: auto;
+}
+
+.three-tool-menu.collapsed {
+  flex: 0;
+  min-width: 0px;
+  transition: all ease-in-out 0.5s;
+}
+
+.three-tool-menu.expanded {
+  flex: 0.2;
+  min-width: 300px;
+  transition: all ease-in-out 0.5s;
+}
+
+.three-tool-menu-button {
+  margin: 20px !important;
+}
+
+.three-tool-menu-title {
+  padding-bottom: 5px;
+}
+
+.three-tool-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.three-tool-container .content {
+  width: 100%;
+}
+
+.three-measure-tool-container .three-controls-button {
+  position: absolute;
+}
+
+.three-tool-container .title  h3{
+  display: flex !important;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+  flex-wrap: nowrap;
+  width: 100%;
+  color: #fff;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.three-tool {
+  position: relative;
+  width: 100%;
+}
+
+.three-tool-component-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: rgba(0,0,0,0.7) !important;
+  border: 2px solid #ccc !important;
+  padding: 20px !important;
+  margin-top: 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.three-tool-component-label {
+  background: none !important;
+  color: #ccc !important;
+  border-right: 2px solid #ccc !important;
+  border-bottom: 2px solid #ccc !important;
+}
+
+.three-tool-component-container .input-range {
+  padding-top: 20px;
+}
+
+.three-color-picker-container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.three-color-picker-container .three-controls-button {
+  margin: 5px;
+}
+
+.three-color-picker {
+  width: 90% !important;
+}
+
+.three-tool-component-container .input-range .input-range__track--active {
+  background: rgb(0, 180, 0) !important;
+}
+
+.three-tool-component-container .input-range__slider {
+  background: rgb(0, 180, 0) !important;
+  border: none !important;
+  touch-action: none !important;
+}
+
+.three-tool-toggle-container {
+  display: flex;
+  align-items: stretch;
+}
+
+.three-gui-group {
+  margin: 10px;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.three-gui-group-title {
+  border-bottom: 2px solid #ccc;
+  padding: 5px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.three-tool-toggle label:before {
+  background-color: #ccc !important;
+}
+
+.ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before {
+    background-color: grey;
+}
+
+.three-toggle-status {
+  padding-left: 5px;
+}
+
+.three-toggle-multi-label {
+  margin-right: 15px;
+}
+
+/*** Screenshots ***/
+
+.three-screenshot-button-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.three-data-download-link .ui.basic.label {
+  display: flex;
+  background-color: rgba(0,0,0,0.5) !important;
+}
+
+.three-screenshot-button-container .three-controls-button {
+  flex: 1;
+}
+
+.three-data-download-link {
+  flex: 1;
+}
+
+.three-data-download-link .label {
+  background-color: none !important;
+  background: none !important;
+  color: #fff !important;
+}
+
+.three-data-download-link .label:hover {
+  color: #ccc !important;
+}
+
+.three-data-download-link.hide {
+  flex: 0;
+  max-width: 0px;
+  opacity: 0;
+  transition: all ease-in-out 1s;
+}
+
+.three-data-download-link.show {
+  flex: 1;
+  opacity: 1;
+  max-width: 500px;
+  margin-right: 10px;
+  transition: all ease-in-out 1s;
+}
+
+/*** MESH EXPORTER ***/
+.three-export-modal {
+  display: flex;
+  justify-content: center;
+}
+
+.three-export-modal-header {
+  font-family: 'Source Code Pro', monospace !important;
+  font-size: 25px !important;
+  border-bottom: 2px solid #fff !important;
+}
+
+.three-export-modal-content {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.three-export-format {
+  color: #fff;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 2px solid #3b3b3b;
+  padding: 10px 0px 10px 0px;
+}
+
+.three-export-format-label {
+
+}
+
+.three-export-format i {
+  color: #fff !important;
+}
+
+.three-export-format > * {
+  margin-right: 10px;
+}
+
+.three-export-format-download {
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+/*** Embed Modal ***/
+.three-embed-form * {
+  font-family: "Source Code Pro", monospace !important;
+  color: #fff !important;
+}
+
+.three-embed-form .field textarea {
+  background: #000 !important;
+}
+
+.three-embed-form-copy-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 20px;
+}
+
+.three-embed-copy-status {
+  font-family: "Source Code Pro", monospace !important;
+  position: absolute;
+  align-self: flex-end;
+}
+
+/*** Annotations ***/
+.three-annotation-tool-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.three-annotation-tool-container > .three-gui-group {
+  max-height: 340px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.annotation
+{
+  width: auto;
+  height: auto;
+  max-height: 50%;
+  max-width: 20%;
+  background-color: rgba(13, 13, 13, 0.9);
+  border: 2px solid #1b1b1b;
+  border-radius: 7px;
+  text-align: center;
+  overflow: hidden;
+  resize: both;
+  /*min-height: 150px;*/
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.annotation-head
+{
+  position: relative;
+  color: white;
+  background-color: rgba(27, 27, 27, 0.9);
+  border-radius: 5px 5px 0px 0px;
+  width: auto;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 30%;
+}
+
+.annotation-head > .text-area {
+  font-size: 1.3vw !important;
+  font-weight: bold;
+}
+
+.annotation-body
+{
+  position: relative;
+  flex-grow: 1;
+  color: white;
+  background-color: none;
+  pointer-events: auto;
+  margin-bottom: 20px;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  word-wrap: break-word;
+}
+
+.annotation-body-read-only {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  margin: 30px;
+  flex-grow: 1;
+  color: white;
+  background-color: none;
+  pointer-events: auto;
+  margin-bottom: 20px;
+  height: auto;
+  max-height: 90%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  word-wrap: break-word;
+  background-color: rgba(13, 13, 13, 0.7);
+  border: 2px solid #fff;
+  border-radius: 7px;
+  text-align: center;
+  overflow: hidden;
+  /*min-height: 150px;*/
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.annotation-body > .text-area {
+  font-size: 1vw !important;
+  text-align: center;
+}
+
+.text-area-read-only {
+  font-size: 1vw !important;
+  text-align: center;
+  height: auto;
+  width: auto;
+  padding: 5%;
+  border: none;
+  outline: none;
+  resize: none;
+  background: none;
+  color: white;
+  text-align: center;
+  font-family: "Source Code Pro", monospace;
+  font-size: 1rem;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  word-break: break-word;
+  margin-bottom: 10px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.text-area
+{
+  height: 100%;
+  width: 100%;
+  padding: 5%;
+  border: none;
+  outline: none;
+  resize: none;
+  background: none;
+  color: white;
+  text-align: center;
+  font-family: "Source Code Pro", monospace;
+  font-size: 1rem;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.annotation-shortcut-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35px;
+  background-color: rgba(0,0,0,0.7) !important;
+  border: 2px solid #ccc !important;
+  padding: 5px !important;
+  margin-top: 10px !important;
+  display: flex;
+  font-family: 'Source Code Pro', monospace;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.annotation-shortcut-title {
+  height: 100%;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: none !important;
+  color: #ccc !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px !important;
+}
+
+.annotation-status-label {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.annotation-shortcut-label-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+}
+
+.annotation-shortcut-button-container {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: #1b1b1b;
+  flex-wrap: wrap;
+  align-self: center;
+}
+
+.annotation-shortcut-button {
+  background-color: #1b1b1b !important;
+  border: none;
+  width: auto;
+  height: 100%;
+  cursor: pointer;
+}
+
+.annotation-shortcut-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000 !important;
+}
+
+.annotation-shortcut-icon {
+  /*color: #ccc !important;*/
+}
+
+.annotation-shortcut-settings-container {
+  padding: 5px;
+}
+.annotation-shortcut-settings-container > .three-tool-component-container {
+  padding: 10px !important;
+}
+
+.toggle-annotations-presentation-button {
+  background-color: rgba(0,0,0,0.8) !important;
+  justify-self: center;
+  margin-right: 0px !important;
+}
+
+.toggle-annotations-presentation-button:hover {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/*** MOBILE Styles ***/
+
+.three-touch-listener {
+  width: 100%;
+  height: auto;
+  align-self: center;
+  flex:1;
+  touch-action: none;
+}
+
+@media screen and (max-width: 520px) {
+
+  #root {
+    height: auto;
+  }
+
+  .three-gui-container {
+    justify-content: flex-start;
+  }
+
+  .three-view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    max-height: 100%;
+    background-color: #000;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    align-self: center;
+    flex:1;
+  }
+
+  .three-tool-menu.collapsed {
+    flex: 0;
+    max-height: 0px;
+    transition: all ease-in-out 0.5s;
+  }
+
+  .three-tool-menu.expanded {
+    flex: 0.2;
+    max-height: 300px;
+    transition: all ease-in-out 0.5s;
+  }
+
+}

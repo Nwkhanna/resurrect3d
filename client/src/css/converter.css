@@ -1,0 +1,44 @@
+.three-converter-form-group {
+  flex-wrap: wrap !important;
+  background: #1c1c1c;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 50px !important;
+  justify-content: center;
+  display: flex;
+}
+
+.three-converter-form {
+  margin: 10%;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.three-converter-form-field {
+  margin: 20px !important;
+}
+
+.three-converter-form-field .input {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.three-converter-form-field .input input {
+  background: #1b1b1b !important;
+  color: #fff !important;
+  width: 90% !important;
+}
+
+.three-converter-form-field .input input[type="file"],
+.three-converter-form-field .input input[type="text"]
+{
+  font-family: 'Source Code Pro', monospace !important;
+}
+
+.three-converter-form-field > label {
+  text-align: center;
+}
+
+.three-converter-form-submit {
+  color: #fff !important;
+  font-family: 'Source Code Pro', monospace !important;
+  position: relative;
+}

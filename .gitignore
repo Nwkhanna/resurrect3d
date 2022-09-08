@@ -1,0 +1,26 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+client/node_modules
+server/node_modules
+node_modules
+
+# testing
+/coverage
+
+# production
+client/build
+
+# misc
+.DS_Store
+.env
+*.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+client/public/*.js
+client/public/*.jpg
+client/public/*.png
+server/config.js
+server/email.json
+server/privatekey.json
